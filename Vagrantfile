@@ -7,7 +7,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision :shell, path: "provision/bootstrap.sh"
 
   config.vm.network "private_network", ip: "192.168.50.4"
-  config.vm.synced_folder "./", "/var/www", create: true, group: "www-data", owner: "www-data"
+  config.vm.synced_folder "./", "/var/www", create: true, group: "www-data", owner: "vagrant", :mount_options => ['dmode=775', 'fmode=775']
 
   config.vm.provider "virtualbox" do |vb|
   # Customize the amount of memory on the VM:
